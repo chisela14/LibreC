@@ -1,19 +1,27 @@
-//To DO: crear recurso nuevo (bares por ejemplo)
-//cargar fichero, modificar y guardar
-//https://stackabuse.com/reading-and-writing-json-files-with-node-js/ 
+const { connect } = require('diskdb');
+const express = require('express');
+const { dbConnection } = require('./database/config');
+require('dotenv').config();
+
+const app = express()
+// require('./db')
+const cervezas = require('./routes/cervezas')
+const users = require('./routes/users')
+const auth = require('./routes/auth')
+const tapas = require('./routes/tapas')
+// DATABASE CONNECTION
+async function connectAtlas(){
+    await dbConnection()
+}
+connectAtlas()
+//MIDDLEWARE
+app.use(express.json())
+
+//ROUTES
+app.use('/cervezas', cervezas)
+app.use('/users', users)
+app.use('/auth', auth)
+app.use('/tapas', tapas)
 
 
-var express = require('express') //llamamos a Express
-var app = express() 
-var port = 8080  // establecemos nuestro puerto
-let cervezasJson = require('./mode/cervezas.json');
-
-//middleware
-app.use(express.json());
-app.use('/cervezas', require('./routes/cervezas.js'));
-app.use('/bares', require('./routes/bares.js'))
-              
-
-// iniciamos nuestro servidor
-app.listen(port)
-console.log('API escuchando en el puerto ' + port)
+app.listen(process.env.PORT)

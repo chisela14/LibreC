@@ -1,20 +1,12 @@
-const express = require('express');
-const router = express.Router();
+const express = require('express')
+const router = express.Router()
 
-const{getCervezas, crearCerveza, borrarCerveza}=require('../controllers/cervezas.js');
+const {getBeers, getBeer, addBeer, deleteBeer, editBeer} = require('../controllers/cervezas')
 
-router.get('/', getCervezas);
-  
-router.post('/', crearCerveza);
+router.get('/', getBeers)
+router.get('/:id', getBeer)
+router.post('/', addBeer)
+router.delete('/:id', deleteBeer)
+router.put('/:id', editBeer)
 
-router.delete('/:id', borrarCerveza);
-
-module.exports = router;
-
-// router.put('/cervezas', function(req, res) {
-    
-// })
-
-// router.patch('/cervezas', function(req, res) {
-    
-// })
+module.exports = router
