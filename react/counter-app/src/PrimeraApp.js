@@ -5,7 +5,7 @@
 //import React, { Fragment } from "react"; opción más antigua con <Fragment></Fragment>
 import React from "react"; //en principio ya no hace falta
 import PropTypes from "prop-types";
-
+                    //desestructuración
 const PrimeraApp = ({nombre, apellidos}) => { //(props)   otra forma de poner un valor predeterminado: apellidos='García'
     let n = 1+1;
     let b = false; //no lo muestra
