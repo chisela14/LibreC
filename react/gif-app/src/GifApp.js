@@ -32,7 +32,6 @@ export const GifApp = () => {
           <button onClick={addCategory} className="btn btn-primary">Añadir categoría</button>
         </div> */}
         
-        <ol>
           {
             categories.map((category) => //{return <GifGrid ... />}
               <GifGrid
@@ -45,7 +44,7 @@ export const GifApp = () => {
             //   return <li key={index}>{category}</li>
             // })
           }
-        </ol>
+        
         <div className="d-flex">
           <button onClick={removeCategory} className="btn btn-danger" value="last">Eliminar última categoría</button>
           <button onClick={removeCategory} className="btn btn-danger" value="first">Eliminar primera categoría</button>
